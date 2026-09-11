@@ -13,6 +13,7 @@ The throughline: **ground every claim in real code, lock every decision with the
 | **yh-llmeval** | `/yh-llmeval` | LLM-evaluation pre-planning protocol. Problem decomposition, umbrella tests (100–1000 generated cases + LLM-as-judge), parallel non-invasive pipelines, research grounding, a capped clarification loop, and a final assumptions check before any plan is produced. |
 | **yh-fe-integration** | `/yh-fe-integration` | Frontend-integration + end-to-end verification method for *after* the backend is built. Wire the FE to real APIs, then **prove every user journey by driving the real browser** (chrome-devtools / playwright MCP), not curl: one isolated context per persona, type don't inject, server-truth from the network panel, streamlined dead-end-free navigation, human handoff for captcha/login/external dashboards, root-cause every bug by bisection (never hand off a render bug), and close with cases-tested + honest gaps. |
 | **yh-routine-eng-review** | `/yh-routine-eng-review` | Outsider, production-readiness code review from two skeptical seats at once — a **senior cyber-security engineer** and a **senior Google-level staff engineer**. Honest, no cheerleading. Fans out fresh-context reviewers across architecture, **duplicate/parallel code paths**, file/function size, separation of concerns, **unit-test presence *and* meaning**, reliability/observability, performance, and the full security surface (authz/IDOR, injection, secrets, abuse) — every finding grounded in `file:line`, **re-verified against the code before reporting**, severity-ranked, and closed with a ship/no-ship verdict plus an ordered "what it takes to ship." |
+| **i-am-overstimulated** | `/i-am-overstimulated` | Emergency brevity mode for when the walls of prose have become the problem. Hard output contract: **result on line 1, five lines max**, no preamble, no options survey, no permission-seeking, no honesty theatre. Obvious defaults get taken silently; a genuine blocker comes back as **2–3 asks of 6–10 words, each with a copy-pasteable ref**. Default goal is always end-to-end proof driven by you. Long *work* is fine — long *talk* is the offence. |
 
 ## Install
 
@@ -27,6 +28,7 @@ ln -s "$PWD/yh-auditproduct"    ~/.claude/skills/yh-auditproduct
 ln -s "$PWD/yh-llmeval"         ~/.claude/skills/yh-llmeval
 ln -s "$PWD/yh-fe-integration"  ~/.claude/skills/yh-fe-integration
 ln -s "$PWD/yh-routine-eng-review" ~/.claude/skills/yh-routine-eng-review
+ln -s "$PWD/i-am-overstimulated" ~/.claude/skills/i-am-overstimulated
 ```
 
 Or copy any `yh-*/` directory into a project's `.claude/skills/`. Invoke with the slash command (e.g. `/yh-plan`).
