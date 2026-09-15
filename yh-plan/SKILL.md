@@ -65,6 +65,8 @@ The diagrams are the gate, not a decoration. Author **both** views, get the appr
 
 Multi-page is expected: an orientation/decision page, one page per major architecture flow, **and** one page per major user journey. The approver vets **both** the architecture and the user-journey views.
 
+**Node labels MUST be terse — a diagram is not an essay.** Every shape carries a short label: aim **3-6 words**, hard cap ~10, one line. A node is a headline — a symbol/route/verb-phrase (`createTask child sub-task`, `POST /api/webhooks/source/:id`, `resolveWorkspaceConnectorAccess`); a diamond is a short question (`Token reaches?`, `Signature valid?`, `Bundle row + runtime on?`). **Never** put full sentences, `file:line` / `.ts:` / `.sql:` citations, or "why/because/so that" reasoning inside a box — all of that lives in the ENG-PLAN prose, and the diagram must not repeat it. A legend/key or a short invariants-summary note box may run a little longer, but flow and decision nodes stay terse. A box stuffed with a paragraph is a bug: it is unreadable at diagram zoom and defeats the point of the view. (Learned the hard way — an approved sprint had architecture nodes of 2,000-5,800 characters; the readable version has none over ~60.)
+
 ### Gate 2 — Assumptions locked (zero open)
 
 The Phase C checklist carries through with **zero open / unconfirmed items** — each marked *verified-in-code (`file:line`)* or *confirmed-by-user*. The approver signs off that the set is locked. One open assumption holds the gate.
