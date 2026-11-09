@@ -76,6 +76,7 @@ Report, every run:
   - **Only-the-human-can-verify:** external dashboards, payout ledgers, third-party split/fee accounting, webhook delivery logs. Never let "I verified our read-model recorded 70/30" masquerade as "the third party actually did the split" — say which one you saw.
   - **Untested:** cases you didn't reach (needs a test clock, a second account, a real key), and explicitly deferred items.
 - Be precise about the difference between *built*, *wired*, and *verified-on-the-real-UI*.
+- **When the person who delegated can't easily check the work themselves, finish with `/yh-visual-proof`**: it turns these cases into one published page of screenshots, before/afters and a verdict per flow.
 
 ## Phase 7 — Catalog & hand off to the designer
 
