@@ -28,7 +28,7 @@ Read this whole skill before you start. It is long on purpose — it encodes har
 
 ## What a sprint looks like on disk (the artifact contract)
 
-Kavela sprints live in `kavela/agenttask/sprints/<workstream-or-DDMMYY>/` (date codes like `240726`, `080827`; or a kebab-case workstream name). **Before you invent structure, read an existing sprint hub** (`240726/`, `prod-cycle-release/`, `290626-week/`) — you'll get the format in one look, and consistency matters.
+Kavela sprints live in `kavela/agenttask/sprints/<workstream-or-DDMMYY>/` (date codes like `240726`, `080827`; or a kebab-case workstream name). **Before you invent structure, read an old sprint hub for the format.** Old hubs left the tree on 2026-11-02: `git -C kavela ls-tree -r --name-only 328be1b agenttask/sprints/240726/` lists one, and `git -C kavela show 328be1b:<path>` reads it. Check `kavela/highlevel/` first for what the sprint should serve.
 
 ### The hub (sprint-level files)
 - **`README.md`** — index: a status callout at top (with the DECISIONS-LOCKED pointer), a "what's inside" table, provenance (where the items came from), and the hard rules. The convention line: **new items land here as an initial spec, then graduate per item.**
@@ -101,7 +101,7 @@ Every item — and unconditionally every high-risk / mission-critical / new-arch
 Dump the findings to `AUDIT-ROUND-N.md` (per item), fan out a fix pass (each item applies its findings **re-grounded in code** — the auditor errs too), then re-audit. **Converge when no CRITICAL/HIGH remain** (MED/LOW residue is normal for a plan going to founder vetting). Expect **each round to surface new things** — a fix agent's own map was incomplete and a fresh auditor caught the seventh invoker; a "parity verdict" was architecturally wrong and the audit caught it. That is the process working, not failing. Stop looping on polish; don't chase LOW findings forever.
 
 ### Phase 8 — Recap, outside-audit the whole plan, reconcile the SOT
-Post a final recap covering **assumptions · grounding (the real code seen) · the affected repo(s) structure · what's NEW vs edited · why it's best-practice engineering**. For a plan marked complete, **spawn an outside auditor** to audit it end-to-end (does every cited `file:line` exist? add-vs-edit correct? hallucination + scope-fence check) and **re-verify its findings against the code yourself**. Then **reconcile the high-level SOT** (`kavela/agenttask/high-level-kavela/`, `.md` + `.html` in lock-step) — mark any gap this plan closes; never self-scope new features into it. Update `STATUS.txt`. Report the per-item verdicts and exactly what the founder still owes (vet drawios + test plans, the confirms, any spikes).
+Post a final recap covering **assumptions · grounding (the real code seen) · the affected repo(s) structure · what's NEW vs edited · why it's best-practice engineering**. For a plan marked complete, **spawn an outside auditor** to audit it end-to-end (does every cited `file:line` exist? add-vs-edit correct? hallucination + scope-fence check) and **re-verify its findings against the code yourself**. Then **reconcile the high-level SOT** (`kavela/highlevel/`, above all `code-reality.md`) — mark any gap this plan closes; never self-scope new features into it. Update `STATUS.txt`. Report the per-item verdicts and exactly what the founder still owes (vet drawios + test plans, the confirms, any spikes).
 
 ---
 
