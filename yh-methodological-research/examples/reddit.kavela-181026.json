@@ -1,0 +1,125 @@
+{
+ "_note": "The real config from the Kavela landing research (181026): six product families x eight pain clusters.",
+ "window": "year",
+ "pace_seconds": 8,
+ "families": {
+  "workflow (n8n, Zapier, Make)": "n8n+zapier+Integromat+automation+nocode",
+  "Claude cloud": "ClaudeAI+ClaudeCode+Anthropic",
+  "OpenAI cloud": "OpenAI+ChatGPTCoding+codex+ChatGPTPro",
+  "coding agents (Cursor, Copilot)": "cursor+GithubCopilot",
+  "computer agents (Manus, Genspark, Gemini)": "ManusOfficial+AI_Agents+genspark_ai+GeminiAI",
+  "DIY QA (Playwright, testing)": "QualityAssurance+softwaretesting+Playwright"
+ },
+ "clusters": {
+  "silent": {
+   "query": "\"stopped working\" OR silently OR \"no error\" OR \"without any error\" OR \"didn't run\" OR \"not triggering\" OR \"says done\" OR \"claims it\" OR \"lied\" OR \"pretends\"",
+   "keywords": [
+    "stopped working",
+    "silently",
+    "no error",
+    "without any error",
+    "didn't run",
+    "not triggering",
+    "says done",
+    "said it was done",
+    "claims it",
+    "lied",
+    "lying",
+    "pretend",
+    "fake",
+    "hallucinat",
+    "doesn't actually",
+    "didn't actually"
+   ]
+  },
+  "auth": {
+   "query": "\"token expired\" OR reconnect OR \"refresh token\" OR oauth OR \"logged out\" OR \"credentials expired\"",
+   "keywords": [
+    "token expired",
+    "expired token",
+    "reconnect",
+    "refresh token",
+    "oauth",
+    "logged out",
+    "logs out",
+    "credentials expired",
+    "re-auth",
+    "reauth"
+   ]
+  },
+  "cost": {
+   "query": "\"usage limit\" OR \"rate limit\" OR credits OR \"too expensive\" OR pricing OR \"weekly limit\"",
+   "keywords": [
+    "usage limit",
+    "rate limit",
+    "credits",
+    "expensive",
+    "pricing",
+    "weekly limit",
+    "limit reached",
+    "hit the limit",
+    "price"
+   ]
+  },
+  "browser": {
+   "query": "captcha OR \"can't log in\" OR \"cannot log in\" OR 2FA OR \"no browser\" OR cloudflare",
+   "keywords": [
+    "captcha",
+    "can't log in",
+    "cannot log in",
+    "2fa",
+    "no browser",
+    "cloudflare",
+    "login wall",
+    "verify you are human"
+   ]
+  },
+  "setup": {
+   "query": "docker OR \"self-host\" OR \"self hosted\" OR \"environment setup\" OR \"setup script\" OR secrets",
+   "keywords": [
+    "docker",
+    "self-host",
+    "self host",
+    "environment",
+    "setup script",
+    "secrets",
+    "env var"
+   ]
+  },
+  "babysit": {
+   "query": "babysit OR \"permission prompt\" OR \"keeps asking\" OR \"approve every\" OR \"check on it\"",
+   "keywords": [
+    "babysit",
+    "permission prompt",
+    "keeps asking",
+    "approve every",
+    "check on it",
+    "hand-hold",
+    "handhold"
+   ]
+  },
+  "memory": {
+   "query": "forgets OR \"lost context\" OR \"doesn't remember\" OR \"lost my work\" OR \"context window\"",
+   "keywords": [
+    "forgets",
+    "forgot",
+    "lost context",
+    "doesn't remember",
+    "lost my work",
+    "context window",
+    "memory"
+   ]
+  },
+  "handover": {
+   "query": "client OR handover OR \"version control\" OR \"hand off\" OR \"for clients\"",
+   "keywords": [
+    "client",
+    "handover",
+    "version control",
+    "hand off",
+    "handoff",
+    "git"
+   ]
+  }
+ }
+}

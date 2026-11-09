@@ -1,0 +1,271 @@
+{
+ "_note": "A trimmed slice of the real Kavela 181026 data (4 of 19 products). Full set: kavela/prop_research/competitormap/landscape.data.json. Run it to see the robustness check fire: on 4 products #1 flips when H is weighted 5, while on all 19 it holds. Too few products is not a decisive ranking.",
+ "product": "Kavela",
+ "center": "Getting AI to do recurring work\nin your tools, unattended",
+ "weights": {
+  "H": 3,
+  "M": 2,
+  "L": 1,
+  "W": 0.5
+ },
+ "strength_rule": "H = 100+ reactions, 200+ HN points, or a dominant review theme across 100+ reviews. M = 20-99 reactions or 3-9 threads. L = one thread or under 20 reactions. W = only found secondhand.",
+ "categories": [
+  {
+   "name": "Workflow automation",
+   "side": "right",
+   "competitors": [
+    {
+     "name": "n8n",
+     "pains": [
+      {
+       "text": "Workflows fail silently: no error, no log (forum + 2 Reddit threads: 'silently stopped')",
+       "strength": "H",
+       "cluster": "silent"
+      },
+      {
+       "text": "OAuth tokens die, reconnect by hand",
+       "strength": "H",
+       "cluster": "auth"
+      },
+      {
+       "text": "AI Agent node loops, claims it did things",
+       "strength": "M",
+       "cluster": "silent"
+      },
+      {
+       "text": "Version control is paywalled (667 EUR/mo)",
+       "strength": "M",
+       "cluster": "handover"
+      },
+      {
+       "text": "Credentials don't travel on client handover",
+       "strength": "M",
+       "cluster": "handover"
+      },
+      {
+       "text": "License unclear for consultants",
+       "strength": "M",
+       "cluster": "handover"
+      },
+      {
+       "text": "Self-hosted upgrades break runs",
+       "strength": "M",
+       "cluster": "setup"
+      }
+     ]
+    },
+    {
+     "name": "Zapier",
+     "pains": [
+      {
+       "text": "Task burn and billing traps (1.3/5, 323 reviews)",
+       "strength": "H",
+       "cluster": "cost"
+      },
+      {
+       "text": "Zaps stop with no alert",
+       "strength": "M",
+       "cluster": "silent"
+      },
+      {
+       "text": "AI builder promises what it can't do",
+       "strength": "M",
+       "cluster": "silent"
+      },
+      {
+       "text": "Reconnect loops on expired connections",
+       "strength": "M",
+       "cluster": "auth"
+      },
+      {
+       "text": "Agents runs missed on stale sign-ins",
+       "strength": "M",
+       "cluster": "auth"
+      },
+      {
+       "text": "A second user costs about 3.5x",
+       "strength": "W",
+       "cluster": "cost"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Anthropic cloud",
+   "side": "right",
+   "competitors": [
+    {
+     "name": "Claude Code cloud + routines",
+     "pains": [
+      {
+       "text": "Usage limits cut off long runs (726 + 545 reactions)",
+       "strength": "H",
+       "cluster": "cost"
+      },
+      {
+       "text": "Tied to GitHub, default branch only",
+       "strength": "H",
+       "cluster": "scope"
+      },
+      {
+       "text": "Headless sign-in; tokens expire mid-run",
+       "strength": "H",
+       "cluster": "auth"
+      },
+      {
+       "text": "No secrets store, network allowlist (212)",
+       "strength": "H",
+       "cluster": "setup"
+      },
+      {
+       "text": "No browser: can't check the UI",
+       "strength": "M",
+       "cluster": "browser"
+      },
+      {
+       "text": "Permission prompts block unattended runs",
+       "strength": "M",
+       "cluster": "babysit"
+      },
+      {
+       "text": "Routines not shared with the team",
+       "strength": "M",
+       "cluster": "team"
+      },
+      {
+       "text": "Routine reports success, did nothing",
+       "strength": "L",
+       "cluster": "silent"
+      },
+      {
+       "text": "Says done without verifying",
+       "strength": "L",
+       "cluster": "silent"
+      },
+      {
+       "text": "Next run forgets what the last one did",
+       "strength": "L",
+       "cluster": "memory"
+      },
+      {
+       "text": "15 routine runs a day",
+       "strength": "L",
+       "cluster": "cost"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "OpenAI cloud",
+   "side": "right",
+   "competitors": [
+    {
+     "name": "Codex Cloud + automations",
+     "pains": [
+      {
+       "text": "Usage drains mid-task (561 reactions)",
+       "strength": "H",
+       "cluster": "cost"
+      },
+      {
+       "text": "Headless sign-in: refresh token already used",
+       "strength": "H",
+       "cluster": "auth"
+      },
+      {
+       "text": "No browser in the cloud (105)",
+       "strength": "H",
+       "cluster": "browser"
+      },
+      {
+       "text": "GitHub.com only",
+       "strength": "M",
+       "cluster": "scope"
+      },
+      {
+       "text": "Cloud tasks fail to start",
+       "strength": "M",
+       "cluster": "setup"
+      },
+      {
+       "text": "Scheduled runs break with nobody watching",
+       "strength": "M",
+       "cluster": "silent"
+      },
+      {
+       "text": "Secrets hidden, internet cut after setup",
+       "strength": "L",
+       "cluster": "setup"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "cluster_defs": {
+  "silent": {
+   "name": "It fails silently, or says done when it isn't",
+   "resolves": "yes",
+   "how": "A separate reviewer checks every run against your must-pass lines and sends the gap back; after 3 tries it brings you the work and what still falls short. A finished or failed scheduled run is pushed to your chat. A watchdog means no run hangs forever.\njudge-deliverables.ts:24 · re-brief-agent.ts:423 · chat-run-stream-do.ts:58 · chat-run-do-lifecycle.ts:114"
+  },
+  "cost": {
+   "name": "It burns budget or hits limits mid-run",
+   "resolves": "partial",
+   "how": "Runs on the Claude or Codex plan you already pay for, with a usage bar per window. At the limit tasks wait, then continue, and never switch to paid credits on their own. It does not make your plan's limits bigger.\ncli-account-pool-do.ts:14 · plan-usage.ts:76"
+  },
+  "auth": {
+   "name": "Connections and sign-ins expire",
+   "resolves": "yes",
+   "how": "Tokens refresh before they expire. One run per plan account at a time, so parallel runs never break the refresh. A reconnect lands as a card in Approvals.\noauth/token-refresh.ts · cli-account-pool-do.ts:9"
+  },
+  "browser": {
+   "name": "It can't sign in, has no browser, gets stuck at a CAPTCHA",
+   "resolves": "yes",
+   "how": "Every agent has a real browser. A sign-in or CAPTCHA opens a live browser you clear once, and it carries on from the same page. Its own inbox reads the codes.\nbrowser-tools.ts:283 · browser-takeover.ts · mail-router"
+  },
+  "setup": {
+   "name": "Environment setup, secrets, self-hosting",
+   "resolves": "partial",
+   "how": "Nothing to host. Each agent gets a ready computer with a browser; credentials stay server-side. A complex repo can still need setup.\n_sandbox.ts:70 · container-secrets.ts"
+  },
+  "scope": {
+   "name": "Tied to GitHub, can't work outside the repo",
+   "resolves": "yes",
+   "how": "Any service with an MCP server, a key or a sign-in page; posts to Lark, Slack, Telegram.\nmcp-connect.ts · send-im-message.ts:17"
+  },
+  "babysit": {
+   "name": "It needs babysitting, or asks about every step",
+   "resolves": "yes",
+   "how": "Choose assistive, supervised or autonomous. Only risky steps wait, all in one Approvals inbox; a comment wakes the agent with your note.\nautonomy.ts:80 · human-actions/service.ts:67"
+  },
+  "team": {
+   "name": "It isn't shared with the team",
+   "resolves": "yes",
+   "how": "Workflows, files and connections belong to the workspace; one calendar for every agent.\nr2-direct-adapter.ts:94"
+  },
+  "handover": {
+   "name": "Versioning and handing over to clients",
+   "resolves": "partial",
+   "how": "Workflow versions and history; the client connects their own accounts through Approvals. No git branching.\nworkflow-versions.ts · approvals/connect-account.ts"
+  },
+  "memory": {
+   "name": "It forgets or loses work between runs",
+   "resolves": "yes",
+   "how": "One shared file tree persists; a new message continues the right earlier chat by meaning.\nr2-direct-adapter.ts:94 · related-work.ts"
+  }
+ },
+ "placement": {
+  "silent": "HERO",
+  "cost": "VISUAL: usage meter + footnote (not the headline)",
+  "auth": "SUB LINE + proof strip",
+  "browser": "VISUAL: the QA workflow",
+  "setup": "HOW IT WORKS: nothing to host",
+  "scope": "SCENES: drastically different jobs",
+  "babysit": "HOW IT WORKS: approve only risky steps",
+  "memory": "FAQ + PM scene",
+  "handover": "Consultant scene + FAQ",
+  "team": "FAQ"
+ }
+}
